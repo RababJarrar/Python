@@ -1,0 +1,15 @@
+pip list : it gives me a list all the Python packages installed in an environment
+
+deactivate : it will deactivate your virtual environment)
+
+pip3 list : is an updated version of pip which is used basically for python 3+.When you run PIP3, 
+           you can be sure that the module will be installed in Python 3
+
+pip install Django==2.2.4 : install Django which is a high-level Python web framework that encourages rapid development and clean, pragmatic design
+
+pip freeze : tells you which modules you've installed with pip install and the versions of 
+           these modules that you are currently have installed on your computer.
+
+pip uninstall Django: uninstall Django 
+
+pip show Django: it shows Django 
