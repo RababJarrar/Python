@@ -31,13 +31,13 @@ class BankAccount:
 class User:
     def __init__(self,name):
         self.name=name
-        self.account_balance=BankAccount( int_rate=.02, balance=0)
+        self.account=BankAccount( int_rate=.02, balance=0)
 
     def make_deposit(self,amount):     #method
-        self.account_balance.deposit(amount)
+        self.account.deposit(amount)
 
     def make_withdrawl(self,amount):     #method
-        self.account_balance.withdrawl(amount)
+        self.account.withdrawl(amount)
     
     def display_user_balance(self):
-        self.account_balance.display_account_info()
+        self.account.display_account_info()
