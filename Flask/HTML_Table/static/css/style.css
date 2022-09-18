@@ -1,0 +1,17 @@
+table{
+margin: 0 auto;
+width: 500px;
+height: 200px;
+border-collapse: collapse;
+border: 1px solid black;
+
+}
+td{
+    border-collapse: collapse;
+    border: 1px solid black; 
+    padding-left: 10px;
+}
+thead{
+    font-weight: bolder;
+    height: 40px;
+}
