@@ -3,7 +3,6 @@
    margin: 0 auto;
    width: 400px;
    height: 400px;
-   background-color: blueviolet;
    border: 2px solid black;
 }
 .row{
@@ -17,5 +16,17 @@
 .box2{
     width: 50px;
     height: 50px;
-    background-color: white;
+    background-color: black;
  }
+ .container2{
+   margin: 0 auto;
+   width: 400px;
+   height: 200px;
+   border: 2px solid black;
+}
+.container3{
+   margin: 0 auto;
+   width: 400px;
+   height: 200px;
+   
+}
