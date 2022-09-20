@@ -28,4 +28,4 @@ def edit(request,number):
 
 
 def destroy(request,number):
-    return redirect('/')
+    return redirect('/blogs')
