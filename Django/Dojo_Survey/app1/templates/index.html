@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Document</title>  
+</head>
+<body>
+
+    <form action='/result' method='post'>
+    Your Name: <input type='text' name='name'>
+    <p>Dojo Location:
+        <select name="location">
+            <option>San Jose</option>
+            <option>Palestine</option>
+        </select>
+    </p>
+    <p>Favorite Language:
+        <select name="language">
+            <option>Python</option>
+            <option>Java</option>
+        </select>
+    </p>
+    <p>Comment (optional):</p>
+    <textarea name="comment" cols="50" rows="5"></textarea>
+    <br>
+    <input type='submit' value='Button' class ="button2">
+</form>
+</body>
+</html>
