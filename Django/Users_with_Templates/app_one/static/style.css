@@ -1,0 +1,38 @@
+main{
+    width: 800px;
+    height: 600px;
+    /* background-color: aqua; */
+    margin: 0 auto;
+    text-align: center;
+}
+
+th,td{
+    border: 2px solid black;
+    border-collapse: collapse;
+    text-align: left;
+    height: 20px;
+    padding-left: 8px;
+
+    
+}
+table{
+    width: 600px;
+    border: 2px solid black;
+    border-collapse: collapse;
+    margin: 0 auto;
+
+    
+}
+div{
+    margin: 0 auto;
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    padding-bottom:15px ;
+}
+input{
+    width: 100px;
+}
+#but{
+    width: 50px;
+}

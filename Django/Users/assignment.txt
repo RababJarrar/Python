@@ -1,0 +1,27 @@
+C:\Users\Jafar\Desktop\AXSOS\Python\Django>django-admin startproject Users
+cd Users
+call "C:\Users\Jafar\Desktop\AXSOS\Python_stack\my_environments\py3Env\Scripts\activate"
+code .
+python manage.py startapp app_one
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell
+from app_one.models import *
+
+user.objects.create(first_name = "maryam",last_name = "dabbous",email_address = "maryam@yahoo.com",age = "25")
+user.objects.create(first_name = "rabab",last_name = "jarrar",email_address = "rabab@yahoo.com",age = "23")
+user.objects.create(first_name = "hadeel",last_name = "kamal",email_address = "hadeel@yahoo.com",age = "24")
+
+user.objects.all()
+user.objects.first()
+user.objects.last()
+
+o = user.objects.get(id=3)
+o.last_name="Pancakes"
+o.save()
+
+c = user.objects.get(id=2)
+c.delete()
+
+user.objects.all().order_by("first_name")
+

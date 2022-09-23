@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}"> 
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h1>All the Users</h1>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+            </tr>
+            {% for user in all_the_users %}
+                <tr>
+                    <td>{{ user.id}}</td>
+                    <td>{{ user.Name }}</td>
+                    <td>{{ user.Email }}</td>
+                    <td>{{ user.Age }}</td>
+                </tr>
+            {% endfor %}
+        <table>
+        <h1>Add a User</h1>
+        <form action="/insert" method="post"> 
+        <div>
+            <label>First Name </label>
+            <input type="text" name="name1" >
+            <label>Last Name </label>
+            <input type="text"name="name2" >
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="text"name="email" >
+            <label>Age</label>
+            <input type="number"name="age" >
+        </div>
+           {%csrf_token%}
+            <input type="submit" value="Add" id="but" >
+        </form>
+    </main>
+</body>
+</html>
