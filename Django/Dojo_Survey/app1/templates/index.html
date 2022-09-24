@@ -9,25 +9,25 @@
     <title>Document</title>  
 </head>
 <body>
-
-    <form action='/result' method='post'>
-    Your Name: <input type='text' name='name'>
-    <p>Dojo Location:
-        <select name="location">
-            <option>San Jose</option>
-            <option>Palestine</option>
-        </select>
-    </p>
-    <p>Favorite Language:
-        <select name="language">
-            <option>Python</option>
-            <option>Java</option>
-        </select>
-    </p>
-    <p>Comment (optional):</p>
-    <textarea name="comment" cols="50" rows="5"></textarea>
-    <br>
-    <input type='submit' value='Button' class ="button2">
-</form>
+    <form action='/user' method='post'>
+        {% csrf_token %}
+        Your Name: <input type='text' name='name1'>
+        <p>Dojo Location:
+            <select name="location">
+                <option>San Jose</option>
+                <option>Palestine</option>
+            </select>
+        </p>
+        <p>Favorite Language:
+            <select name="language">
+                <option>Python</option>
+                <option>Java</option>
+            </select>
+        </p>
+        <p>Comment (optional):</p>
+        <textarea name="comment" cols="50" rows="5"></textarea>
+        <br>
+        <input type='submit' value='Button' class ="button2">
+    </form>
 </body>
 </html>
