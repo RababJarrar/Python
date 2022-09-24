@@ -1,23 +1,22 @@
 from django.shortcuts import render, HttpResponse,redirect  
 import random
+gussedNumber = random.randint(1, 100)
 
 def index(request):
+    
     return render(request,'index.html')
 
 def root(request):
-    gussedNumber = random.randint(1, 100)
-    request.session['guess'] = gussedNumber
-    enterNumber = request.Post['user_number']
+    # request.session['guess'] = gussedNumber
+    enterNumber = request.POST['user_number']
 
-    if (enterNumber==gussedNumber):
+    if (int(enterNumber)==int(gussedNumber)):
        request.session['result'] = 'correct' 
 
-    elif ((enterNumber>gussedNumber+10) or (enterNumber<gussedNumber-10)):
+    elif ((int(enterNumber)>(int(gussedNumber)+10)) or (int(enterNumber)<(int(gussedNumber)-10))):
         request.session['result'] = 'Too High!'
 
     else:
         request.session['result'] = 'Too Low!'
-
-    return render(request,'index.html')
-
+    return render(request,'index2.html')
 
