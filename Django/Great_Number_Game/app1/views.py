@@ -7,7 +7,7 @@ def index(request):
     return render(request,'index.html')
 
 def root(request):
-    # request.session['guess'] = gussedNumber
+    request.session['guess'] = gussedNumber
     enterNumber = request.POST['user_number']
 
     if (int(enterNumber)==int(gussedNumber)):
