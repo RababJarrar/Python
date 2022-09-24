@@ -11,7 +11,7 @@
 <body>
     <form action='/user' method='post'>
         {% csrf_token %}
-        Your Name: <input type='text' name='name1'>
+        <div>Your Name: <input type='text' name='name1'></div>
         <p>Dojo Location:
             <select name="location">
                 <option>San Jose</option>
@@ -27,7 +27,9 @@
         <p>Comment (optional):</p>
         <textarea name="comment" cols="50" rows="5"></textarea>
         <br>
+        <footer>
         <input type='submit' value='Button' class ="button2">
+        </footer>
     </form>
 </body>
 </html>
