@@ -13,5 +13,5 @@ def create_user(request):
     request.session['COMMENT']=comment_from_form 
     return redirect('/final')
 
-def f(request):
+def result(request):
   return render(request, 'index2.html')
