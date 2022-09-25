@@ -1,22 +1,27 @@
+from multiprocessing import context
 from django.shortcuts import render, HttpResponse,redirect  
 import random
-gussedNumber = random.randint(1, 100)
+
 
 def index(request):
-    
+    gussedNumber = random.randint(1, 100)
+    request.session['guess'] = gussedNumber
+    context = {
+        'Num' : gussedNumber
+    }
     return render(request,'index.html')
 
 def root(request):
-    request.session['guess'] = gussedNumber
+    gussedNumber = request.session['guess'] 
     enterNumber = request.POST['user_number']
 
     if (int(enterNumber)==int(gussedNumber)):
        request.session['result'] = 'correct' 
 
-    elif ((int(enterNumber)>(int(gussedNumber)+10)) or (int(enterNumber)<(int(gussedNumber)-10))):
+    elif ((int(enterNumber)>(int(gussedNumber)))):
         request.session['result'] = 'Too High!'
 
     else:
         request.session['result'] = 'Too Low!'
-    return render(request,'index2.html')
+    return redirect('/')
 

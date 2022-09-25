@@ -10,10 +10,10 @@
 </head>
 <body>
     <h3> Submitted Info</h3>
-    <p>Name = {{n}}</p>
-    <p>Locagtion={{lo}} </p>
-    <p>Language={{la}}</p>
-    <p>Comment={{co}}</p>
+    <p>Name = {{request.session.NAME}}</p>
+    <p>Locagtion={{request.session.LOCATION}} </p>
+    <p>Language={{request.session.LANGUAGE}}</p>
+    <p>Comment={{request.session.COMMENT}}</p>
     <input type='submit' value='Go Back' class ="button2">
 </body>
 </html>

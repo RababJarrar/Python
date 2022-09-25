@@ -7,26 +7,11 @@ def create_user(request):
     location_from_form = request.POST['location']
     language_from_form = request.POST['language']
     comment_from_form = request.POST['comment']
-    context={
-        "n": name_from_form ,
-        "lo": location_from_form,
-        "la":language_from_form,
-        "co":comment_from_form
-        }
-    return render(request, 'index2.html',context)
+    request.session['NAME']=name_from_form
+    request.session['LOCATION']=location_from_form
+    request.session['LANGUAGE']=language_from_form 
+    request.session['COMMENT']=comment_from_form 
+    return redirect('/final')
 
-# def create_user(request):
-#     name_from_form = request.POST['name1']
-#     location_from_form = request.POST['location']
-#     language_from_form = request.POST['language']
-#     comment_from_form = request.POST['comment']
-#     context={
-#         "n": name_from_form ,
-#         "lo": location_from_form,
-#         "la":language_from_form,
-#         "co":comment_from_form
-#         }
-#     return redirect("/success")
-
-# def success(request):
-#     return render(request,'index2.html')
+def f(request):
+  return render(request, 'index2.html')
