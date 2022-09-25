@@ -1,0 +1,61 @@
+main{
+    
+    width: 1200px;
+    height: 250px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+form{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+header{
+    margin: 0 auto;
+    width: 1200px;
+    height: 70px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+footer{
+    margin: 0 auto;
+    width: 1200px;
+    height: 70px;
+    text-align: left; 
+}
+textarea{
+    width: 1200px;
+    height: 150px;
+    overflow-y: scroll;
+}
+button{
+    width: 80px;
+    height: 25px;
+    box-shadow: 2px 2px 2px black;
+    background-color: white;
+}
+div{
+    width: 100px;
+    height: 30px; 
+    border: 1px solid black;
+    margin-left: 20px;
+    padding-left: 5px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    
+}
+
+.earn{
+    color: green;
+}
+
+.loose{
+    color: red;
+}
