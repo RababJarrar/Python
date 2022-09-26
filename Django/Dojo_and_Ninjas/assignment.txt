@@ -1,0 +1,42 @@
+Dojo.objects.create(name="dojo_one", city="Ramallah", state="state1")
+Dojo.objects.create(name="dojo_two", city="Jenin", state="state2")
+Dojo.objects.create(name="dojo_three", city="Nablus", state="state3")
+
+c=Dojo.objects.all() 
+c.delete()
+
+
+Dojo.objects.create(name="dojo_four", city="Ramallah", state="state4")
+Dojo.objects.create(name="dojo_five", city="Jenin", state="state5")
+Dojo.objects.create(name="dojo_sex", city="Nablus", state="state6")
+
+Ninja.objects.create(first_name="Rabab", last_name="Jarrar", dojo=Dojo.objects.get(id=4))
+Ninja.objects.create(first_name="Maryam", last_name="Dabbous", dojo=Dojo.objects.get(id=4))
+Ninja.objects.create(first_name="Hadeel", last_name="Kamel", dojo=Dojo.objects.get(id=4))
+
+Ninja.objects.create(first_name="ahmad", last_name="ja", dojo=Dojo.objects.get(id=5))
+Ninja.objects.create(first_name="Maram", last_name="Dabbous", dojo=Dojo.objects.get(id=5))
+Ninja.objects.create(first_name="Huda", last_name="Kamel", dojo=Dojo.objects.get(id=5))
+
+Ninja.objects.create(first_name="as", last_name="g", dojo=Dojo.objects.get(id=6))
+Ninja.objects.create(first_name="md", last_name="k", dojo=Dojo.objects.get(id=6))
+Ninja.objects.create(first_name="da", last_name="l", dojo=Dojo.objects.get(id=6))
+
+Ninja.objects.filter(dojo=Dojo.objects.first())
+Ninja.objects.filter(dojo=Dojo.objects.last())
+
+Dojo.objects.filter(ninjas=Ninja.objects.last())
+
+python manage.py makemigrations
+
+Select an option: 1.>>> 
+"old dojo"
+
+python manage.py migrate
+python manage.py shell
+from app_one.models import *
+
+Select an option: 1.>>> 
+"old dojo"
+
+Dojo.objects.create(name="dojo_sex", city="Nablus", state="state6", desc="A")
