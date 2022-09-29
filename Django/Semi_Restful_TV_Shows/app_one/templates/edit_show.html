@@ -10,6 +10,9 @@
 </head>
 <body>
     <header style="text-align: right;"><a href="/shows">Go Back</a></header>
+    {% for message in messages %}
+        <p>{{message}}</p> 
+    {% endfor %}  
     <form action="/update/{{this_show.id}}" method="POST">
         {%csrf_token%}
         <h1>Edit Show {{this_show.id}}</h1>

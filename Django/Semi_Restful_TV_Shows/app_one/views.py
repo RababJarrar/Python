@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse,redirect
+from django.contrib import messages
 from .models import Show
 
 def page_show(request):
@@ -11,6 +12,12 @@ def page_add_show(request):
     return render(request,'new_show.html')
 
 def create_show(request):
+    errors=Show.objects.basic_validator(request.POST)
+    if len(errors)>0:
+        for error in errors.values():
+            messages.error(request,error)
+        return redirect('/shows/new')
+
     TITLE=request.POST['title']
     NETWORK=request.POST['network']
     DATE=request.POST['date']
@@ -35,6 +42,11 @@ def page_edit(request,id):
     return render(request,'edit_show.html',context)
     
 def update_show(request,id):
+    errors=Show.objects.basic_validator(request.POST)
+    if len(errors)>0:
+        for error in errors.values():
+            messages.error(request,error)
+        return redirect('/shows/new')
     TITLE=request.POST['title']
     NETWORK=request.POST['network']
     DATE=request.POST['date']
