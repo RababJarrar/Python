@@ -8,7 +8,7 @@
 </head>
 <body>
         <h1>{{the_book.title}}</h1>
-        <h3 name="mar">ID : {{the_book.id}}</h3>
+        <h3>ID : {{the_book.id}}</h3>
         <h3>Description : {{the_book.desc}}</h3>
     <br>
     <br>
@@ -18,9 +18,9 @@
     {%endfor%}
     <br>
     <br>
-    <form action="/add" method="post">
+    <form action="/add/{{the_book.id}}" method="post">
         {%csrf_token%}
-        <select name="select1">
+        <select name="select_add">
             {%for author in all_the_authors %}
             <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
             {%endfor%}
