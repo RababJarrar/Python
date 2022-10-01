@@ -14,11 +14,7 @@ def process(request):
     if 'which_form' in request.POST:   
         earn= random.randint(-50,50) if request.POST['which_form']=="quest" else random.randint(10,20)
         status='earn' if earn>=0 else 'loose'
-        current_log = {
-            # "status": "earn" if earn>=0 else "loose",
-            "message":(f"you enterd a {request.POST['which_form']} and {status}{earn} gold.({strftime('%b %d, %Y  %I:%M %p' , localtime())})"),
-        }
-        # print((f"you enterd a {request.POST['which_form']} and {status} {earn} gold.({strftime('%b %d, %Y  %I:%M %p' , localtime())})"))
+        current_log = (f"you enterd a {request.POST['which_form']} and {status}{earn} gold.({strftime('%b %d, %Y  %I:%M %p' , localtime())})")
         
         request.session['gold']+= earn
         request.session['logs'].append(current_log)

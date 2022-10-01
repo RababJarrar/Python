@@ -50,7 +50,7 @@
         <label><h2>Activities:</h2></label><br>
         <textarea name="activities">
             {% for logs in request.session.logs %}
-                {{request.session.logs}}
+                {{logs}}
             {%endfor%}
         </textarea>
     </footer>
