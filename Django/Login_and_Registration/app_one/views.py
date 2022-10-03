@@ -22,9 +22,8 @@ def make(request):
     FNAME=request.POST['fname']
     LNAME=request.POST['lname']
     EMAIL=request.POST['email']
-    PASS1=request.POST['pass1']
    
-    pw_hash = bcrypt.hashpw(PASS1.encode(), bcrypt.gensalt()).decode() 
+    pw_hash = bcrypt.hashpw(request.POST['pass1'].encode(), bcrypt.gensalt()).decode() 
     print(pw_hash)      
     User.objects.create(first_name=FNAME,last_name=LNAME,email=EMAIL,password=pw_hash)
     user = User.objects.get(email=request.POST['email'])
@@ -35,14 +34,20 @@ def make(request):
 def log(request):
     user = User.objects.get(email=request.POST['email'])
     request.session['user_id']=user.id
-    if user.password != request.POST['pass']:
+
+    if bcrypt.checkpw(request.POST['pass'].encode(), user.password.encode()):
         messages.error(request,'Please check your email and password')
-        print("failed password")
-        return redirect('/')
-        
-    else:
-        print("password match")    
         return redirect('/success')
+        
+
+    # if user.password != request.POST['pass']:
+    #     messages.error(request,'Please check your email and password')
+    #     print("password match")
+    #     return redirect('/')   
+    else:
+        print("password failed") 
+        messages.error(request,'Please check your email and password')   
+        return redirect('/') 
 
 def suc(request):
     if 'user_id' not in request.session:
@@ -55,4 +60,4 @@ def suc(request):
 
 def suc2(request):
     request.session.clear()
-    return render(request,'index.html')
+    return redirect('/')
