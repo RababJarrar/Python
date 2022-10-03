@@ -5,10 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-    <header><a href="/logout">Log  Out</a></header>
-    <h1>Success! Welcome, {{this_user.first_name}}!</h1>
-    <h3 style="color:green ;">Successfully registered (or looged in)!</h3>
+    <header>
+        <h1>CodingDojo Wall</h1>
+        <span><p>Welcome {{this_user.first_name}}!</p>
+        <a href="/logout">Log off</a></span>
+    </header>
+    <div class="midd">
+        <form action="/postmessage/{{this_user.id}}"method='post'>
+            {%csrf_token%}
+            <p>Post a message</p>
+            <textarea name="mess"cols="100" rows="5"></textarea><br>
+            <button style="background-color:blue;color:white">Post a message</button>
+        </form>
+    </div>
+    <footer>
+        {% for user in all_user %}
+            <p style="font-size:27px ;font-weight:bolder;">{{user.first_name}} {{user.last_name}} - {{user.updated_at}}</p>
+            {% for msg in user.messages.all %}	
+                <p>{{msg.message}}</p>
+                <form action="/postcomment/{{this_user.id}}/{{msg.id}}"method='post'>
+                    {%csrf_token%}
+                    <p style="color: red;">Post a comment</p>
+                    <textarea name="comm"cols="90" rows="2"></textarea><br>
+                    <button>Post a comment</button>
+                </form>
+                        {% for cmt in msg.comments.all %}	
+                        <p style="font-weight:bolder;font-size:21px ;">{{cmt.user.first_name}} {{cmt.user.last_name}} - {{cmt.updated_at}}</p>
+                        <p>{{cmt.comment}}</p>
+                        {% endfor %}
+            {% endfor %}
+        {% endfor %}
+    </footer>
 </body>
 </html>
+

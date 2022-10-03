@@ -4,6 +4,8 @@ from wsgiref import validate
 from django.forms import EmailField
 from django.shortcuts import render, HttpResponse , redirect
 from .models import User
+from .models import Message
+from .models import Comment
 from django.contrib import messages
 import bcrypt
 
@@ -42,16 +44,30 @@ def log(request):
         print("password failed") 
         messages.error(request,'Please check your email and password')   
         return redirect('/') 
-
+########################################################
 def suc(request):
     if 'user_id' not in request.session:
        messages.error(request,'You must log in first')
        return redirect('/')
     context={
-        'this_user':User.objects.get(id=request.session['user_id'])
+        'this_user':User.objects.get(id=request.session['user_id']),
+        'all_user':User.objects.all()
     }
     return render(request,'index2.html',context)
-
-def suc2(request):
+########################################################
+def out(request):
     request.session.clear()
     return redirect('/')
+
+########################################################
+
+def post_m(request,id):
+    MESS= request.POST['mess']
+    my_message = Message.objects.create(message=MESS, user=User.objects.get(id=id))
+    return redirect('/success')
+
+def post_c(request,u_id,m_id):
+    COMM= request.POST['comm']
+    my_comment = Comment.objects.create(comment=COMM,message=Message.objects.get(id=m_id), user=User.objects.get(id=u_id))
+    return redirect('/success')
+

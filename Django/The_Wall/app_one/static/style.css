@@ -5,13 +5,29 @@ main{
     display: flex;
     justify-content: space-between;
 }
+.midd{
+    margin: 0 auto;
+    width: 750px;
+    height: 160px;
+    display: flex;
+    justify-content: space-between;  
+}
+footer{
+    margin: 0 auto;
+    width: 750px;
+    height: 600px; 
+}
 form{
     width: 270px;
 }
 header{
-    width: 700px;
-    height: 120px;
-    margin: 0 auto;     
+    width: 1000px;
+    height: 90px;
+    margin: 0 auto;  
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;  
+    border-bottom: 2px solid black;
 }
 div{
     width: 200px;
@@ -20,4 +36,10 @@ div{
     flex-direction: column;
     justify-content: space-between;
     
+}
+span{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;  
+    width: 200px;
 }
