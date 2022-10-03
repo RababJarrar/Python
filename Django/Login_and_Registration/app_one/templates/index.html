@@ -10,31 +10,32 @@
 
 </head>
 <body>
+    <header>
+        {% for message in messages %}
+        <p style="color: red;">{{message}}</p> 
+        {% endfor %}  
+    </header>
     <main>
-        <div>
-            {% for message in messages %}
-            <p style="color: red;">{{message}}</p> 
-            {% endfor %}  
             <form action="/register"method='post'>
                 {% csrf_token %}
             <h1>Registeration</h1>
-            First Name <input type="text"name="fname"> <br><br>
-            Last Name <input type="text"name="lname"> <br><br>
-            Email <input type="email"name="email"> <br><br>
-            Password <input type="password"name="pass1"> <br><br>
-            Confirm PW<input type="password"name="pass2"> <br><br>
+            <div> First Name <input type="text"name="fname"> <br><br></div>
+            <div>Last Name <input type="text"name="lname"> <br><br></div>
+            <div>Email <input type="email"name="email"> <br><br></div>
+            <div>Password <input type="password"name="pass1"> <br><br></div>
+            <div>Confirm PW<input type="password"name="pass2"> <br><br></div>
             <button>Register</button>
             </form>
-        </div>
-        <div>
+        
+        
             <form action="/login"method='post'>
                 {% csrf_token %}
             <h1>Login</h1>
-            Email <input type="email"name="email"> <br><br>
-            Password <input type="password"name="pass"> <br><br>
+            <div>Email <input type="email"name="email"> <br><br></div>
+            <div>Password <input type="password"name="pass"> <br><br></div>
             <button>Login</button>
             </form>
-        </div>
+        
     </main>
 </body>
 </html>
