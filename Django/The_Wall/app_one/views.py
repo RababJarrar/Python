@@ -37,7 +37,7 @@ def log(request):
 
     if bcrypt.checkpw(request.POST['pass'].encode(), user.password.encode()):
         return redirect('/success')
-        
+         
     else:
         print("password failed") 
         messages.error(request,'Please check your email and password')   
