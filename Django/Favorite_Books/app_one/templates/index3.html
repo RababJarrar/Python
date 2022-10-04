@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}"> 
+</head>
+<body>
+    <div class="top"><a href="/logout">Log  Out</a>
+    <h1> Welcome, {{user_login.first_name}} {{user_login.last_name}}!</h1></div>
+
+    <main> 
+        <div>
+            <form action="/update_desc/{{this_book.id}}" method="post">
+                {% csrf_token %}
+                {%if user_login.id == this_book.uploaded_by.id %}
+                    <textarea class="booktitle" name="text_title">{{this_book.title}}</textarea>
+                {%elif user_login.id != this_book.uploaded_by.id %}
+                    <h1>{{this_book.title}}</h1>
+                {%endif%}
+            <div class="detailes">
+                <p>Added by:{{this_book.uploaded_by.first_name}} {{this_book.uploaded_by.last_name}}</p>
+                <p>Added on:{{this_book.created_at}}</p>
+                <p>Last updated on:{{this_book.updated_at}}</p>
+                {%if user_login.id == this_book.uploaded_by.id %}
+                        <p> Description:</p>
+                        <textarea name="text_desc" cols="20" rows="5">{{this_book.description}}</textarea><br>
+                        <button style="background-color:white ;width: 60px;margin-bottom: 10px;">Update</button>
+                    </form>
+                    <form action="/delete_desc/{{this_book.id}}" method="post">
+                        {% csrf_token %}
+                        <button style="background-color:red ;color: white;width: 60px;">Delete</button>
+                    </form>
+        
+                {%elif user_login.id != this_book.uploaded_by.id %}
+                    <p>Description:{{this_book.description}}</p>
+                {%endif%}
+            </div>
+        </div>
+        <div>
+            <p>Users Who Like This Book:</p>
+            <ul>
+                {% for u in this_book.users_who_like.all %}
+                    <li>{{u.first_name}} {{u.last_name}}</li>
+                    {%if u.id in this_book.users_who_like.all %}
+                        <a href="/un_fav/{{u.id}}/{{this_book.id}}">Un-Favorite</a>
+                    {%elif u.id not in this_book.users_who_like.all %}
+                        <a href="/fav/{{u.id}}/{{this_book.id}}">Add to Favorite</a>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

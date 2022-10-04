@@ -17,6 +17,15 @@ class UserManager(models.Manager):
             errors["pass2"] = "Please ensure your password matches the confirmation!"
         return errors
 
+class BookManager(models.Manager):
+    def basic_validator(self, postData):
+        errors = {}
+        if len(postData["title"]) < 1:
+            errors["title"] = "Title is required"
+        if len(postData["desc"]) < 5:
+            errors["desc"] = "Description should be at least 5 characters"    
+        return errors
+
 class User(models.Model):
     first_name = models.CharField(max_length=255)
     last_name= models.CharField(max_length=255)
@@ -26,12 +35,16 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
     # liked_books = a list of books a given user likes
-    # books_uploaded = a list of books uploaded by a given user
+    # books_uploaded////// = a list of books uploaded by a given user
     
 class Book(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    # uploaded_by = user who uploaded a given book
-    # users_who_like = a list of users who like a given book
+    uploaded_by = models.ForeignKey(User,related_name="books_uploaded", on_delete = models.CASCADE)
+                # user who uploaded a given book
+    users_who_like =models.ManyToManyField(User,related_name="liked_books")
+                # a list of users who like a given book
+    objects = BookManager()
+

@@ -5,10 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}"> 
 </head>
 <body>
-    <header><a href="/logout">Log  Out</a></header>
-    <h1>Success! Welcome, {{this_user.first_name}}!</h1>
-    <h3 style="color:green ;">Successfully registered (or looged in)!</h3>
+    <div class="top"><a href="/logout">Log  Out</a>
+    <h1> Welcome, {{this_user.first_name}}!</h1></div>
+    {% for message in messages %}
+    <p style="color: red;text-align: center;">{{message}}</p> 
+    {% endfor %}
+    <main> 
+        <form action="/add_book/{{this_user.id}}" method="post"class="left">
+            {% csrf_token %}
+            <h2>Add a Favorite Book</h2>
+            <div>Title <input type="text"name="title"></div>
+            <div>Description <input type="text"name="desc"></div>
+            <button>Add</button>
+        </form>
+        <div class="right">
+            <h3>All Books</h3>
+            {% for b in all_books %}
+            <a href="/books/{{b.id}}">{{b.title}}</a>
+            (added by {{b.uploaded_by.first_name}} {{b.uploaded_by.last_name}})
+            {% endfor %}
+        </div>
+    </main>
 </body>
 </html>
