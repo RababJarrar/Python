@@ -1,0 +1,23 @@
+main{
+    margin: 0 auto;
+    width: 700px;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+}
+form{
+    width: 270px;
+}
+header{
+    width: 700px;
+    height: 90px;
+    margin: 0 auto;     
+}
+div{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}

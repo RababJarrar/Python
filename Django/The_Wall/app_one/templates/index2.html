@@ -24,20 +24,21 @@
     </div>
     <footer>
         {% for user in all_user %}
-            <p style="font-size:27px ;font-weight:bolder;">{{user.first_name}} {{user.last_name}} - {{user.updated_at}}</p>
-            {% for msg in user.messages.all %}	
+        {% for msg in user.messages.all %}	
+                <p style="font-size:27px ;font-weight:bolder;">{{user.first_name}} {{user.last_name}} - {{user.updated_at}}</p>
                 <p>{{msg.message}}</p>
+                {% for cmt in msg.comments.all %}	
+                <p style="font-weight:bolder;font-size:16px ;">{{cmt.user.first_name}} {{cmt.user.last_name}} - {{cmt.updated_at}}</p>
+                <p>{{cmt.comment}}</p>
+                {% endfor %}
                 <form action="/postcomment/{{this_user.id}}/{{msg.id}}"method='post'>
                     {%csrf_token%}
                     <p style="color: red;">Post a comment</p>
                     <textarea name="comm"cols="90" rows="2"></textarea><br>
                     <button>Post a comment</button>
                 </form>
-                        {% for cmt in msg.comments.all %}	
-                        <p style="font-weight:bolder;font-size:21px ;">{{cmt.user.first_name}} {{cmt.user.last_name}} - {{cmt.updated_at}}</p>
-                        <p>{{cmt.comment}}</p>
-                        {% endfor %}
             {% endfor %}
+            <hr>
         {% endfor %}
     </footer>
 </body>
