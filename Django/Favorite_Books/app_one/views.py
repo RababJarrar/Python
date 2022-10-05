@@ -84,21 +84,20 @@ def bookdetails(request,id):
 
 
 def updatedesc(request,id):
-    
     c = Book.objects.get(id=id)
     c.description = request.POST['text_desc']
     c.title=request.POST['text_title']
     c.save()
     context={
         'this_book':Book.objects.get(id=id),
+        'user_login':User.objects.get(id=request.session['user_id'])
     }
-    return render(request,'index3.html',context)
+    return redirect('/books')
 
 
 def deletedesc(request,id):
     c = Book.objects.get(id=id)
     c.delete()
-
     return redirect('/books')
 
 def unfavorite(request,idu,id):

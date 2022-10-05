@@ -25,8 +25,13 @@
         <div class="right">
             <h3>All Books</h3>
             {% for b in all_books %}
-            <a href="/books/{{b.id}}">{{b.title}}</a>
+            <a href="/books/{{b.id}}" style="font-weight:bolder ;">{{b.title}}</a>
             (added by {{b.uploaded_by.first_name}} {{b.uploaded_by.last_name}})
+                {%if this_user in b.users_who_like.all%}
+                <span><em> this is one  of your favorite</em></span> <br>
+                {%else%}
+                <span><a href="/fav/{{this_user.id}}/{{b.id}}">Add to Favorite</a></span><br>
+                {%endif%}
             {% endfor %}
         </div>
     </main>

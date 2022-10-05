@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="top"><a href="/logout">Log  Out</a>
-    <h1> Welcome, {{user_login.first_name}} {{user_login.last_name}}!</h1></div>
+    <h1> Welcome, {{user_login.first_name}} !</h1></div>
 
     <main> 
         <div>
@@ -45,13 +45,16 @@
             <ul>
                 {% for u in this_book.users_who_like.all %}
                     <li>{{u.first_name}} {{u.last_name}}</li>
-                    {%if u.id in this_book.users_who_like.all %}
-                        <a href="/un_fav/{{u.id}}/{{this_book.id}}">Un-Favorite</a>
-                    {%elif u.id not in this_book.users_who_like.all %}
-                        <a href="/fav/{{u.id}}/{{this_book.id}}">Add to Favorite</a>
-                    {% endif %}
+                    {%if user_login in this_book.users_who_like.all %}
+                        {%if user_login.id == u.id %}
+                        <a href="/un_fav/{{user_login.id}}/{{this_book.id}}">Un-Favorite</a>
+                        {% endif %}
+                    {% endif %}    
                 {% endfor %}
             </ul>
+            {%if user_login not in this_book.users_who_like.all %}
+            <a href="/fav/{{user_login.id}}/{{this_book.id}}">Add to Favorite</a>
+            {% endif %}
         </div>
     </main>
 </body>
