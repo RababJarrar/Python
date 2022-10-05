@@ -1,0 +1,44 @@
+
+header{
+    width: 700px;
+    height: 120px;
+    margin: 0 auto;     
+}
+.row{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;   
+}
+.reg_log{
+    width: 270px;
+}
+
+.row button{
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 30px;
+    display: flex;
+    background-color: blue;
+    color: white;
+    box-shadow: 2px 2px 2px black;
+    cursor: pointer;
+}
+/* ///////////////////////////////////////// */
+.top{
+    width: 700px;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;     
+}
+main{
+    margin: 0 auto;
+    width: 700px;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+}
