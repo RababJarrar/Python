@@ -21,7 +21,7 @@
         </div>
     </div>
     <main style="padding-top: 20px;flex-direction: column;height: 300px;">
-    <h1>{{this_tree.species}} planted by {{this_user.first_name}} {{this_user.last_name}}</h1>
+    <h1>{{this_tree.species}} planted by {{this_tree.user.first_name}} {{this_tree.user.last_name}}</h1>
     <h3>Where: {{this_tree.location}}</h3>
     <h3>When: {{this_tree.created_at}}</h3>
     <h3>Reason: {{this_tree.reason}}</h3>

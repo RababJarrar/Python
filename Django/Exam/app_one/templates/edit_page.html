@@ -22,13 +22,13 @@
     </div>
     <h1 style=" margin: 0 auto;width: 700px; padding-top:70px;">Re-Plant Your Tree</h1><br>
     <main>
-        <form action="/update/{{this_tree.id}}" method="post">
+        <form action="/update/{{this_tree.id}}" method="post"style="display: flex;flex-direction: column;height: 350px;width: 250px;justify-content: space-around;">
             {% csrf_token %}
-            <div>Species:<input type="text"name="species"></div>
-            <div>Location:<input type="text"name="location"></div>
-            <div>Reason <input type="text"name="reason"></div>
-            <div>Date Planted <input type="date"name="date"></div>
-            <button>Updated</button>
+            <div>Species:<br><input type="text"name="species"></div>
+            <div>Location:<br><input type="text"name="location"></div>
+            <div>Reason: <br><input type="text"name="reason"></div>
+            <div>Date Planted <br><input type="date"name="date"></div>
+            <button style="width: 100px;margin-left:10px">Updated</button>
         </form>
     </main>   
 </body>

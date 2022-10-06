@@ -42,7 +42,7 @@ main{
     height: 500px;
     display: flex;
     justify-content: space-between;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
 }
 
 .top_right{
@@ -72,7 +72,7 @@ th,td{
     border: 1px solid black;
 }
 table{
-    width: 300px;
+    width: 600px;
     height: 200px;
 }
 th{

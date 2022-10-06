@@ -11,7 +11,7 @@
 <body>
     <div class="top"><h1>Arbortrary</h1>
         <div class="top_right"><a href="/user/account">My Trees</a>
-            <span style="font-size: 25px;"><h3> Welcome {{this_user.first_name}}!</h3></span>   
+            <span style="font-size: 25px;"><h3> Welcome, {{this_user.first_name}}!</h3></span>   
         </div>
     </div>
     <div class="nav">
@@ -21,14 +21,14 @@
         </div>
     </div>
     <main style="padding-top: 20px;">
-        <form action="/add/{{this_user.id}}" method="post">
+        <form action="/add/{{this_user.id}}" method="post" style="display: flex;flex-direction: column;height: 350px;width: 250px;justify-content: space-around;">
             {% csrf_token %}
             <h2>Arbitrarily Plant a Tree</h2>
-            <div>Species:<input type="text"name="species"></div>
-            <div>Location:<input type="text"name="location"></div>
-            <div>Reason <input type="text"name="reason"></div>
-            <div>Date Planted <input type="date"name="date"></div>
-            <button>Plant</button>
+            <div>Species:<br><input type="text"name="species"></div>
+            <div>Location:<br><input type="text"name="location"></div>
+            <div>Reason: <br><input type="text"name="reason"></div>
+            <div>Date Planted <br><input type="date"name="date"></div>
+            <button style="width: 100px;margin-left:10px">Plant</button>
         </form>
 
     </main>   

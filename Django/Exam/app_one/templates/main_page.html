@@ -11,7 +11,7 @@
 <body>
     <div class="top"><h1>Arbortrary</h1>
         <div class="top_right"><a href="/user/account">My Trees</a>
-            <span style="font-size: 25px;"><h3> Welcome {{this_user.first_name}}!</h3></span>   
+            <span style="font-size: 25px;"><h3> Welcome, {{this_user.first_name}}!</h3></span>   
         </div>
     </div>
     <div class="nav">
@@ -20,7 +20,7 @@
             <a href="/logout">Logout</a>
         </div>
     </div>
-    <main>
+    <main style="padding-top: 60px; height: 250px;">
         <table>
             <tr>
                 <th>Species</th>
@@ -35,12 +35,11 @@
                 </tr>
             {%endfor%}
         </table>
-        <br>
-        <header>
-            {% for message in messages %}
-            <p style="color: red;">{{message}}</p> 
-            {% endfor %}  
-        </header>   
-    </main>   
+    </main> 
+    <header>
+        {% for message in messages %}
+        <p style="color: red;">{{message}}</p> 
+        {% endfor %}  
+    </header>     
 </body>
 </html>
