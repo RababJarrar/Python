@@ -10,37 +10,39 @@
 </head>
 <body>
     <div class="top"><h1>Arbortrary</h1>
-        <div class="top_right"><a href="/user/account">My Trees</a>
+        <div class="top_right">
             <span style="font-size: 25px;"><h3> Welcome {{this_user.first_name}}!</h3></span>   
         </div>
     </div>
     <div class="nav">
         <p>A site to track randomly planted trees</p>
-        <div><a href="/new/tree">Plant a Tree</a>
+        <div><a href="/dashboard">Dashboard</a>
             <a href="/logout">Logout</a>
         </div>
     </div>
+    <h1 style=" margin: 0 auto;width: 700px; padding-top:70px;">Manage My Trees</h1><br>
     <main>
         <table>
             <tr>
                 <th>Species</th>
-                <th>Blanted By</th>
+                <th>Date Planted</th>
                 <th>Actions</th>
             </tr>
-            {%for tree in all_trees%}
+            {%for tree in my_trees%}
+                {% if tree.user.id == this_user.id %}
                 <tr>
                     <td>{{tree.species}}</td>
-                    <td>{{tree.user.first_name}} {{tree.user.last_name}}</td>
-                    <td><a href="/show/{{tree.id}}">details</a></td>
+                    <td>{{tree.created_at}}</td>
+                    <td><a href="/del/{{tree.id}}">delete</a> <a href="/edit/{{tree.id}}">edit</a></td>
                 </tr>
+                {%endif%}
             {%endfor%}
-        </table>
-        <br>
+        </table> 
         <header>
             {% for message in messages %}
             <p style="color: red;">{{message}}</p> 
             {% endfor %}  
-        </header>   
+        </header> 
     </main>   
 </body>
 </html>

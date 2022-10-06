@@ -17,6 +17,20 @@ class UserManager(models.Manager):
             errors["pass2"] = "Please ensure your password matches the confirmation!"
         return errors
 
+class TreeManager(models.Manager):
+        def basic_validator(self, postData):
+            errors = {}
+            # add keys and values to errors dictionary for each invalid field
+            if len(postData['species']) < 5:
+                errors["species"] = "Species should be at least 5 characters"
+            if len(postData['location']) < 2:
+                errors["location"] = "location should be at least 2 characters"
+            if len(postData['reason']) > 50:
+                errors["reason"] = "Reason should be less than 50 characters"
+            if len(postData['date']) < 1:
+                errors["date"] = "Date is required"
+            return errors
+
 class User(models.Model):
     first_name = models.CharField(max_length=255)
     last_name= models.CharField(max_length=255)
@@ -25,3 +39,16 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
+    #trees
+
+class Tree(models.Model):
+    species = models.CharField(max_length=255)
+    user = models.ForeignKey(User, related_name="trees", on_delete = models.CASCADE)
+    location= models.CharField(max_length=255)
+    reason = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects=TreeManager()
+
+
+

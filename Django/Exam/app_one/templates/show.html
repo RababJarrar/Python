@@ -16,31 +16,15 @@
     </div>
     <div class="nav">
         <p>A site to track randomly planted trees</p>
-        <div><a href="/new/tree">Plant a Tree</a>
+        <div><a href="/dashboard">Dashboard</a>
             <a href="/logout">Logout</a>
         </div>
     </div>
-    <main>
-        <table>
-            <tr>
-                <th>Species</th>
-                <th>Blanted By</th>
-                <th>Actions</th>
-            </tr>
-            {%for tree in all_trees%}
-                <tr>
-                    <td>{{tree.species}}</td>
-                    <td>{{tree.user.first_name}} {{tree.user.last_name}}</td>
-                    <td><a href="/show/{{tree.id}}">details</a></td>
-                </tr>
-            {%endfor%}
-        </table>
-        <br>
-        <header>
-            {% for message in messages %}
-            <p style="color: red;">{{message}}</p> 
-            {% endfor %}  
-        </header>   
+    <main style="padding-top: 20px;flex-direction: column;height: 300px;">
+    <h1>{{this_tree.species}} planted by {{this_user.first_name}} {{this_user.last_name}}</h1>
+    <h3>Where: {{this_tree.location}}</h3>
+    <h3>When: {{this_tree.created_at}}</h3>
+    <h3>Reason: {{this_tree.reason}}</h3>
     </main>   
 </body>
 </html>

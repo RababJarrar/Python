@@ -16,31 +16,21 @@
     </div>
     <div class="nav">
         <p>A site to track randomly planted trees</p>
-        <div><a href="/new/tree">Plant a Tree</a>
+        <div><a href="/dashboard">Dashboard</a>
             <a href="/logout">Logout</a>
         </div>
     </div>
-    <main>
-        <table>
-            <tr>
-                <th>Species</th>
-                <th>Blanted By</th>
-                <th>Actions</th>
-            </tr>
-            {%for tree in all_trees%}
-                <tr>
-                    <td>{{tree.species}}</td>
-                    <td>{{tree.user.first_name}} {{tree.user.last_name}}</td>
-                    <td><a href="/show/{{tree.id}}">details</a></td>
-                </tr>
-            {%endfor%}
-        </table>
-        <br>
-        <header>
-            {% for message in messages %}
-            <p style="color: red;">{{message}}</p> 
-            {% endfor %}  
-        </header>   
+    <main style="padding-top: 20px;">
+        <form action="/add/{{this_user.id}}" method="post">
+            {% csrf_token %}
+            <h2>Arbitrarily Plant a Tree</h2>
+            <div>Species:<input type="text"name="species"></div>
+            <div>Location:<input type="text"name="location"></div>
+            <div>Reason <input type="text"name="reason"></div>
+            <div>Date Planted <input type="date"name="date"></div>
+            <button>Plant</button>
+        </form>
+
     </main>   
 </body>
 </html>

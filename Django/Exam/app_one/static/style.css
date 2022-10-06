@@ -29,11 +29,12 @@ header{
 /* ///////////////////////////////////////// */
 .top{
     width: 700px;
-    height: 80px;
+    height: 60px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;  
-    align-items: center;     
+    align-items: center; 
+  
 }
 main{
     margin: 0 auto;
@@ -41,4 +42,39 @@ main{
     height: 500px;
     display: flex;
     justify-content: space-between;
+    background-color: aquamarine;
+}
+
+.top_right{
+    width: 300px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;
+
+}
+.nav{
+    margin: 0 auto;
+    width: 700px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.nav div{
+    display: flex;
+    justify-content: space-between;
+    width: 200px;  
+
+}
+th,td{
+    border: 1px solid black;
+}
+table{
+    width: 300px;
+    height: 200px;
+}
+th{
+    height: 20px;
 }
