@@ -7,10 +7,11 @@ from .models import User
 from django.contrib import messages
 import bcrypt
 
+
 def index(request):
     return render(request,'login_page.html')
 
-def make_register(request):
+def make(request):
     errors=User.objects.basic_validator(request.POST)
     if len(errors)>0:
         for error in errors.values():
@@ -23,23 +24,26 @@ def make_register(request):
     print(pw_hash)      
     User.objects.create(first_name=FNAME,last_name=LNAME,email=EMAIL,password=pw_hash)
     user = User.objects.get(email=request.POST['email'])
+    
     request.session['user_id']=user.id
     return redirect('/success')
 
 def log_in(request):
     user = User.objects.get(email=request.POST['email'])
+    request.session['user_id']=user.id
+
     if bcrypt.checkpw(request.POST['pass'].encode(), user.password.encode()):
-        return redirect('/success')   
+        return redirect('/success')
+        
     else:
         print("password failed") 
         messages.error(request,'Please check your email and password')   
         return redirect('/') 
-
 def log_out(request):
     request.session.clear()
     return redirect('/')
-############################################################
-def show_main_page(request):
+
+def page_success(request):
     if 'user_id' not in request.session:
        messages.error(request,'You must log in first')
        return redirect('/')
@@ -47,3 +51,4 @@ def show_main_page(request):
         'this_user':User.objects.get(id=request.session['user_id'])
     }
     return render(request,'main_page.html',context)
+

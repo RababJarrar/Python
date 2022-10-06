@@ -15,8 +15,6 @@ class UserManager(models.Manager):
             errors['email'] = "Invalid email address!"
         if postData['pass1'] != postData['pass2']:
             errors["pass2"] = "Please ensure your password matches the confirmation!"
-        if User.objects.filter(email =postData['email']).exists:
-            errors["email"] = "Enterd Email is already exists!"
         return errors
 
 class User(models.Model):
@@ -27,5 +25,3 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
-
-
