@@ -39,6 +39,7 @@ def log_in(request):
         print("password failed") 
         messages.error(request,'Please check your email and password')   
         return redirect('/') 
+        
 def log_out(request):
     request.session.clear()
     return redirect('/')
